@@ -56,6 +56,43 @@ public class BaseTutorial {
         System.out.println(wahrheitsbelegung);
 
 
+        //--------------------------------------------------------------------------------------
+
+        int ifZahl = 5;
+        if(ifZahl / 2 == 1)
+        {
+            ifZahl = 1;
+        }
+        System.out.println(ifZahl);
+
+        int [] arr = new int[3];
+        int[] array = {1,2,3};
+
+        for(int a : array)
+        {
+            System.out.println(a);
+        }
+
+        int zahl = 1;
+
+        if(zahl == 1)
+        {
+            System.out.println("Die 1 wurde ausgewählt");
+        }
+        if(zahl == 2)
+        {
+            System.out.println("Die 2 wurde ausgewählt");
+        }
+        if(zahl == 3)
+        {
+            System.out.println("Die 3 bieten wir seit der Klage von 1995 nicht mehr an");
+        }
+        else
+        {
+            System.out.println("Ungültige Eingabe, das System zerstört sich nun selbst, danke dafür");
+        }
+
+
 
 
 
