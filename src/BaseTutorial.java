@@ -23,7 +23,7 @@ public class BaseTutorial {
 
     public BaseTutorial()
     {
-        
+
     }
 
     public static void main(String[] args)
