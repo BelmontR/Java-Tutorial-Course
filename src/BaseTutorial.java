@@ -21,8 +21,14 @@ public class BaseTutorial {
     // - Datentyp boolean -
     public static boolean wahrheitsbelegung = true; //Kann true oder false sein
 
+    public BaseTutorial()
+    {
+        
+    }
+
     public static void main(String[] args)
     {
+        
         System.out.println(text);
 
         System.out.println(zeichen);
@@ -92,7 +98,15 @@ public class BaseTutorial {
             System.out.println("Ungültige Eingabe, das System zerstört sich nun selbst, danke dafür");
         }
 
+        String[] array1 = new String[7];
+        array1[0] = "hi";
+        System.out.println(array1[1] == null);
 
+        int[] a = {1,2,3};
+        for(int element : a)
+        {
+            System.out.println(element);
+        }
 
 
 
