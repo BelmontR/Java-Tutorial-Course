@@ -1,4 +1,4 @@
-package LiveSession;
+package LiveSessionMonday;
 
 public class LiveSessionMontag {
 
