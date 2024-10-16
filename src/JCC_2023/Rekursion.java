@@ -1,3 +1,5 @@
+package JCC_2023;
+
 public class Rekursion {
 
     public static void main(String[] args)

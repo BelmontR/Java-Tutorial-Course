@@ -1,3 +1,5 @@
+package JCC_2023;
+
 public class BaseTutorial {
 
     //--- Zahlenwerte ---

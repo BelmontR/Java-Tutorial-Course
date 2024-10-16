@@ -1,4 +1,4 @@
-package LiveSessionThursday;
+package JCC_2023.LiveSessionThursday;
 
 public class Student {
 

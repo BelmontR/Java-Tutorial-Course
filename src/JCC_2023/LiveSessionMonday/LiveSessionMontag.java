@@ -1,4 +1,4 @@
-package LiveSessionMonday;
+package JCC_2023.LiveSessionMonday;
 
 public class LiveSessionMontag {
 

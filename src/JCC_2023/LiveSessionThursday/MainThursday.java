@@ -1,10 +1,11 @@
-package LiveSessionThursday;
+package JCC_2023.LiveSessionThursday;
 
 public class MainThursday {
 
 
     public static void main(String[] args)
     {
+
         Student rene = new Student(21,"Rene", 'm');
 
         Student[] studis = new Student[29];
