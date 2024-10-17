@@ -2,6 +2,12 @@ package JCC_2024;
 
 public class Student {
 
+    int alter = 22;
+    double groesse = 1.95;
+    char geschlecht = 'm';
+    String name = "Rene";
+    String studiengang = "Informatik (M.Sc)";
+    boolean fsiMitglied = true;
 
     public static void main(String[] args)
     {
@@ -42,6 +48,7 @@ public class Student {
         wahrheitsbelegung = (alter+1) < alter; //alter +1 ist (fast) immer größer alt alter -> (fast immer) false
 
         System.out.println((int) geschlecht);
+        System.out.println(geschlecht);
 
         //======================================================
 
@@ -77,7 +84,7 @@ public class Student {
         durchschnitt /= noten.length;
 
         System.out.println("Notendurchschnitt:" + durchschnitt);
-
+        durchschnitt = 0;
 
         //==================================================
 
@@ -109,6 +116,71 @@ public class Student {
             System.out.println("Irgendwas stimmt hier nicht, deine Daten sind fehlerhaft");
         }
 
+        //==================================================
+
+        int count = 0;
+        while(count < noten.length){
+            if(noten.length == module.length){
+                System.out.println(module[count] + ": " + noten[count]);
+            }
+            else {
+                System.out.println(noten[count]);
+            }
+
+            count ++;
+        }
+
+
+
+        count = 0;
+        while(count < noten.length){
+            durchschnitt += noten[count];
+            count ++;
+        }
+
+
+        durchschnitt /= noten.length;
+        System.out.println("Notendurchschnitt: " + durchschnitt);
+        durchschnitt = 0;
+
+
+        for(int i = 0; i < noten.length; i++){
+            durchschnitt += noten[i];
+        }
+
+
+        durchschnitt /= noten.length;
+        System.out.println("Notendurchschnitt: " + durchschnitt);
+        durchschnitt = 0;
+
+
+        for(int i : noten){
+            durchschnitt += i;
+        }
+
+        durchschnitt /= noten.length;
+        System.out.println("Notendurchschnitt: " + durchschnitt);
+        durchschnitt = 0;
+
+        //========================================================================
+    }
+
+    public float berechneNotendurchschnitt(int[] noten){
+        float res = 0;
+        for(int note : noten){
+            res += note;
+        }
+        return (res / noten.length);
+    }
+
+    public void druckeNoten(int[] noten, String[] module){
+        for(int i = 0; i < noten.length; i++){
+            System.out.println(module[i] +" : " + noten[i]);
+        }
+    }
+
+    public void SetStudiengang(String neuerStudiengang){
+        studiengang = neuerStudiengang;
     }
 
 }
