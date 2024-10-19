@@ -1,18 +1,29 @@
 package JCC_2024;
 
+/*
+Beispielcode für den Java Crashkurs 2024
+Dieser Code wurde vor den Live Sessions erstellt. Der Code der Live Sessions basiert auf ihm
+ */
 public class Student {
 
-    int alter = 22;
-    double groesse = 1.95;
-    char geschlecht = 'm';
-    String name = "Rene";
-    String studiengang = "Informatik (M.Sc)";
-    boolean fsiMitglied = true;
+    private int alter;
+    private double ECTS;
+    public char geschlecht;
+    private String name;
+    public String studiengang;
+    public boolean fsiMitglied = true;
+    public int mtrNr;
+    public int semester;
+
+    int [] noten = new int[0];
+    String[] module = new String[0];
+    private boolean immatrikuliert = true;
+
 
     public static void main(String[] args)
     {
         int alter = 22;
-        double groesse = 1.95;
+        double ECTS = 180.5;
         char geschlecht = 'm';
         String name = "Rene";
         String studiengang = "Informatik (M.Sc)";
@@ -35,10 +46,10 @@ public class Student {
         System.out.println(alter);
 
         int temp = alter + alter;
-        double temp2 = alter * groesse;
+        double temp2 = alter * ECTS;
         System.out.println(temp2);
 
-        temp = (int)(alter * groesse);
+        temp = (int)(alter * ECTS);
         System.out.println(temp);
 
         boolean wahrheitsbelegung = true;
@@ -163,6 +174,28 @@ public class Student {
         durchschnitt = 0;
 
         //========================================================================
+
+        //durchschnitt = berechneNotendurchschnitt(noten);
+        //System.out.println("Notendurchschnitt: " + durchschnitt);
+
+        //========================================================================
+
+        //========== Objektorientierung ==========
+
+        Student rene = new Student(22, 'm', "Rene", "Informatik Master", 1);
+        Student andereStudi = new Student(19, 'w', "CoolerName", "Winf Bachelor", 2);
+
+        int[] n = {1,3,2};
+        String[] m = {"AuD", "UuU", "Bise"};
+
+        rene.notenEintragen(n, m);
+
+        int[] n2 = {1,2,1};
+        String[] m2 = {"KonzMod", "SoSy", "BPM"};
+
+        rene.notenEintragen(n2, m2);
+
+        rene.druckeNoten();
     }
 
     public float berechneNotendurchschnitt(int[] noten){
@@ -173,14 +206,81 @@ public class Student {
         return (res / noten.length);
     }
 
+    public Student(int alter, char geschlecht, String name, String studiengang, int mtr){
+        this.alter = alter;
+        this.geschlecht = geschlecht;
+        this.name = name;
+        this.studiengang = studiengang;
+        this.mtrNr = mtr;
+
+        ECTS = 0;
+        semester = 1;
+        fsiMitglied = false;
+        immatrikuliert = true;
+    }
+
     public void druckeNoten(int[] noten, String[] module){
         for(int i = 0; i < noten.length; i++){
             System.out.println(module[i] +" : " + noten[i]);
         }
     }
 
-    public void SetStudiengang(String neuerStudiengang){
+    public void druckeNoten(){
+        for(int i = 0; i < noten.length; i++){
+            System.out.println(module[i] +" : " + noten[i]);
+        }
+    }
+
+    public void setStudiengang(String neuerStudiengang){
         studiengang = neuerStudiengang;
     }
+
+    public double getECTS(){
+        return ECTS;
+    }
+
+    public void setNotenUndModule(int[] noten, String[] module){
+        this.noten = noten;
+        this.module = module;
+    }
+
+    //Zu kompliziert für den Kurs
+    public void notenEintragen(int[] noten, String[] module){
+        if(this.noten.length <= 0){
+            this.noten = noten;
+            this.module = module;
+        }
+        else{
+            int newLength = this.noten.length + noten.length;
+            int[] newNoten = new int[newLength];
+            String[] newModule = new String[newLength];
+
+            boolean oldArrayDone = false;
+
+            for(int i = 0, j = 0; i < newNoten.length; i++, j++){
+
+                if(!oldArrayDone){
+                    newNoten[i] = this.noten[j];
+                    newModule[i] = this.module[j];
+                    if(j >= this.noten.length -1){
+                        oldArrayDone = true;
+                        j = -1;
+                    }
+                }
+                else{
+                    newNoten[i] = noten[j];
+                    newModule[i] = module[j];
+                }
+
+            }
+            this.noten = newNoten;
+            this.module = newModule;
+        }
+
+    }
+
+
+
+
 
 }
