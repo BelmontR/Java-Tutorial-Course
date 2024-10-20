@@ -1,5 +1,7 @@
 package JCC_2024;
 
+import JCC_2023.ObjectTutorial.Studiengang;
+
 /*
 Beispielcode für den Java Crashkurs 2024
 Dieser Code wurde vor den Live Sessions erstellt. Der Code der Live Sessions basiert auf ihm
@@ -15,8 +17,8 @@ public class Student {
     public int mtrNr;
     public int semester;
 
-    int [] noten = new int[0];
-    String[] module = new String[0];
+    int [] noten = new int[25];
+    String[] module = new String[25];
     private boolean immatrikuliert = true;
 
 
@@ -185,25 +187,41 @@ public class Student {
         Student rene = new Student(22, 'm', "Rene", "Informatik Master", 1);
         Student andereStudi = new Student(19, 'w', "CoolerName", "Winf Bachelor", 2);
 
-        int[] n = {1,3,2};
-        String[] m = {"AuD", "UuU", "Bise"};
+        int[] n = {1,3,2,1,2,1};
+        String[] m = {"AuD", "UuU", "Bise", "KonzMod", "SoSy", "BPM"};
 
-        rene.notenEintragen(n, m);
-
-        int[] n2 = {1,2,1};
-        String[] m2 = {"KonzMod", "SoSy", "BPM"};
-
-        rene.notenEintragen(n2, m2);
+        for(int i = 0; i < n.length; i++)
+        {
+            rene.noteEintragen(n[i], m[i]);
+        }
 
         rene.druckeNoten();
+        float ndurch = rene.berechneNotendurchschnitt();
+        System.out.println(ndurch);
     }
 
     public float berechneNotendurchschnitt(int[] noten){
         float res = 0;
+        int count = 0;
         for(int note : noten){
             res += note;
+            if(note > 0){
+                count++;
+            }
         }
-        return (res / noten.length);
+        return (res / count);
+    }
+
+    public float berechneNotendurchschnitt(){
+        float res = 0;
+        int count = 0;
+        for(int note : noten){
+            res += note;
+            if(note > 0){
+                count++;
+            }
+        }
+        return (res / count);
     }
 
     public Student(int alter, char geschlecht, String name, String studiengang, int mtr){
@@ -235,6 +253,24 @@ public class Student {
         studiengang = neuerStudiengang;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public boolean addECTS(double ectsBonus){
+        ECTS += ectsBonus;
+        if(ECTS >= 180){
+            System.out.println("Glückwunsch, sie haben ihr Studium abgeschlossen!");
+            System.out.println("Gut gemacht, " + name);
+            immatrikuliert = false;
+            studiengang = "Kein Student";
+
+            return true;
+        }
+
+        return false;
+    }
+
     public double getECTS(){
         return ECTS;
     }
@@ -244,7 +280,30 @@ public class Student {
         this.module = module;
     }
 
+    public void noteEintragen(int note, String modul){
+        for(int i = 0; i <= noten.length; i++){
+            if(module[i] == null){
+                noten[i] = note;
+                module[i] = modul;
+                break; //Killt den Loop
+            }
+        }
+    }
+
+    public void notenEintragen(int noten[], String[] module)
+    {
+        for(int i = 0; i < noten.length; i++){
+            noteEintragen(noten[i], module[i]);
+
+            if(!addECTS(5)){
+                break;
+            }
+        }
+    }
+
     //Zu kompliziert für den Kurs
+    //Nimmt an, dass das Noten Array immer voll ist
+    /*
     public void notenEintragen(int[] noten, String[] module){
         if(this.noten.length <= 0){
             this.noten = noten;
@@ -278,6 +337,8 @@ public class Student {
         }
 
     }
+
+     */
 
 
 
