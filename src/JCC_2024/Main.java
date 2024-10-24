@@ -12,17 +12,17 @@ public class Main {
         System.out.println("");
 
         System.out.println("Iterativ: Fibonacci von 20: " + fibonacciIter(20));
-        System.out.println("Rekrusiv: Fibonacci von 20: " + fib(20));
+        System.out.println("Rekursiv: Fibonacci von 20: " + fib(20));
 
         System.out.println("");
 
-        System.out.println("Iterativ: Fibonacci von 45: " + fibonacciIter(45));
-        System.out.println("Rekrusiv: Fibonacci von 45: " + fib(45));
+        System.out.println("Iterativ: Fibonacci vosn 45: " + fibonacciIter(45));
+        System.out.println("Rekursiv: Fibonacci von 45: " + fib(45));
 
         System.out.println("");
 
         System.out.println("Iterativ: Fibonacci von 70: " + fibonacciIter(70));
-        System.out.println("Rekrusiv: Fibonacci von 70: " + fib(70));
+        System.out.println("Rekursiv: Fibonacci von 70: " + fib(70));
 
     }
 
@@ -35,7 +35,7 @@ public class Main {
         if(input == 1){
             return 1;
         }
-        return input *(fakRec(input -1));
+        return input *(fakRec(input -1)); //fakRec(5) = 5 * fakRec(4) = 5 * 4 * fakRec(3) = 5 * 2 * 3 * fakRec(2) = ...
     }
 
     public static long fakIter(int input){
