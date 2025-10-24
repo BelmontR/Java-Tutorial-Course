@@ -4,7 +4,7 @@ public class Rekursion {
 
     public static void main(String[] args)
     {
-        System.out.println(fakIter(1));
+        System.out.println(fibonacciIter(50));
     }
 
     public static long fakIter(int input)
